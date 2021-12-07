@@ -25,7 +25,7 @@ from gpt2tunediscrim import ClassificationHead
 from pytorch_pretrained_bert import GPT2LMHeadModel, GPT2Tokenizer
 
 SmallConst = 1e-15
-enc = GPT2Tokenizer.from_pretrained('gpt-2_pt_models/345M/')
+enc = GPT2Tokenizer.from_pretrained('gpt2-medium')
 
 def perturb_past(past, model, prev, args, classifier, good_index=None, stepsize=0.01, vocab_size=50257,
                  original_probs=None, accumulated_hidden=None, true_past=None, grad_norms=None):
@@ -349,7 +349,7 @@ def sample_from_hidden(model, args, classifier, context=None, past=None, device=
 
 def run_model():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', '-M', type=str, default='gpt-2_pt_models/345M/',
+    parser.add_argument('--model_path', '-M', type=str, default='gpt2-medium',
                         help='pretrained model name or path to local checkpoint')
     parser.add_argument('--bag-of-words', '-B', type=str, default=None, 
                         help='Bags of words used for PPLM-BoW. Multiple BoWs separated by ;')
